@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+int head,n,max_track,seek_time=0,tseek_time=0;
+
+printf("\nenter the head position  ");
+scanf("%d",&head);
+
+printf("\nenter the maximum number of tracks  ");
+scanf("%d",&max_track);
+
+printf("\nenter the number of elements in queue  ");
+scanf("%d",&n);
+
+int req_q[n];
+
+printf("\nenter the disk elements in queue  ");
+for(int i=0;i<n;i++)
+{
+    scanf("%d",&req_q[i]);
+}
+
+for(int i=0;i<n;i++)
+{
+    seek_time=abs(req_q[i]-head);
+    tseek_time+=seek_time;
+    head=req_q[i];
+    printf("%d-->",req_q[i]);
+}
+printf("\n Total seek time is: %d ",tseek_time);
+}
