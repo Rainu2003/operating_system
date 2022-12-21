@@ -1,0 +1,72 @@
+#include<stdio.h>
+int main()
+{
+    int np,res,flag=0,k=0;
+    printf("enter the number of process: ");
+    scanf("%d",&np);
+    printf("enter the number of resources: ");
+    scanf("%d",&res);
+    
+    int max[np][res],all[np][res],fut[np][res],available[res],vis[np],safe[np];
+    for(int i=0;i<np;i++)
+    {
+        vis[i]=0;
+    }
+    printf("max need");
+    for(int i=0;i<np;i++)
+    {
+        for(int j=0;j<res;j++)
+        {
+            scanf("%d",&max[i][j]);
+        }
+    }
+    printf("allocated");
+    for(int i=0;i<np;i++)
+    {
+        for(int j=0;j<res;j++)
+        {
+            scanf("%d",&all[i][j]);
+        }
+    }
+   // printf("future need");
+    for(int i=0;i<np;i++)
+    {
+        for(int j=0;j<res;j++)
+        {
+            fut[i][j]=max[i][j]-all[i][j];
+        }
+    }
+    printf("\nenter available resource");
+    for(int i=0;i<res;i++)
+    scanf("%d",&available[i]);
+    
+    for(int i=0;i<np;i++)
+    {
+        flag=0;
+        if(vis[i]==0)
+        {
+            for(int j=0;j<res;j++)
+            {
+                if(fut[i][j]>available[j])
+                {
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0)
+            {
+               for(int j=0;j<res;j++)
+                {
+                   available[j]+=all[i][j];
+                }
+                   safe[k++]=i;
+                   vis[i]=1;
+                   i=-1;
+            } 
+        }
+    
+    }
+    printf("safe seq: ");
+    for(k=0;k<np;k++)
+    printf(" %d",safe[k]);
+}
