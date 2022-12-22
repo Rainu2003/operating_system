@@ -13,7 +13,7 @@ int main()
     {
         scanf("%d",&ref[i]);
     }
-    printf("\nenter the value of page fault :");
+    printf("\nenter the value of page frame :");
     scanf("%d",&m);
 
     for(i=0;i<m;i++)
